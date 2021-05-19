@@ -10,5 +10,9 @@ router.get(
         res.status(resulst.status).send(result.data);
     })
 );
+router.get('/cocktails/p', asyncHandler(async (req, res) => {
+    let res= await getCockPrice(req.params.p);
+    res.status(result.status).send(result.data);
+}))
 
 module.exports = router;

@@ -6,3 +6,10 @@ async function getCock(){
         status: 200,
     };
 }
+async function getCockPrice(p){
+    const {rows} = await db.query('select cname, preis from cocktail where <= $1', [p]);
+    return{
+        data: rows,
+        status: 200,
+    };
+}
