@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const path = require('path');
+const {notFound, errorHandler} = require('./middleware/errorHandler')
 const routes = require('./routes');
 require('colors');
 // const { notFound, errorHandler } = require('./middleware/errorHandler');
@@ -17,8 +18,8 @@ app.use(helmet());
 app.use(express.json());
 
 app.use('/', routes);
-// app.use(notFound);
-// app.use(errorHandler);
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT ?? 5000;
 
